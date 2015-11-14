@@ -10,6 +10,7 @@ mobile-experience       # Packages for a great mobile UX
 mongo                   # The database Meteor supports right now
 session                 # Client-side reactive dictionary for your app
 jquery                  # Helpful client-side library
+reactive-var
 tracker                 # Meteor's client-side reactive programming library
 logging
 reload
@@ -21,3 +22,5 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 meteor-base             # Packages every Meteor app needs to have
+less
+accounts-password
