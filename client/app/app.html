@@ -1,0 +1,30 @@
+<template>
+  <require from="./components/left-panel"></require>
+  <require from="./components/connection-issue-dialog"></require>
+  <require from="./components/app-loading"></require>
+
+  <div id="container" class="${menu_open ? 'menu-open' : ''}">
+
+    <left-panel current_user.bind="currentUser" lists.bind="lists"></left-panel> <!--click.delegate="getListId()" onAddList.bind="addList"-->
+
+    <div if.bind="disconnected">
+      <connection-issue-dialog></connection-issue-dialog>
+    </div>
+
+    <div class="content-overlay" click.delegate="toggleMenuOpen()"></div>
+      <div id="content-container">
+
+        <!--<div if.bind="router.isNavigating">-->
+        <div>
+          <router-view></router-view>
+        </div>
+
+        <!--
+        <div if.bind="!router.isNavigating">
+          <app-loading></app-loading>
+        </div>
+        -->
+      </div>
+
+  </div>
+</template>

@@ -1,0 +1,81 @@
+<template>
+  <require from="../menu-open-toggle"></require>
+
+  <nav show.bind="editing_title">
+
+    <form class="list-edit-form" submit.delegate="stopEditingTitle()">
+      <input type="text"
+             name="name"
+             value.bind="title_input"
+             change.trigger="onChange()"
+             blur.trigger="onBlur()"
+             autofocus />
+
+      <div class="nav-group right">
+        <a class="nav-item" click.delegate="cancelEditingTitle()">
+          <span class="icon-close" title="Cancel"></span>
+        </a>
+      </div>
+    </form>
+
+    <form class="todo-new input-symbol" submit.delegate="submitNewTask()">
+      <input type="text" name="text" value.bind="new_task_input" placeholder="Type to add new tasks" />
+      <span class="icon-add"></span>
+    </form>
+
+  </nav>
+
+  <nav show.bind="list && !editing_title"> <!-- && ! tasks_loading -->
+
+    <menu-open-toggle></menu-open-toggle>
+
+    <h1 class="title-page" click.delegate="startEditingTitle()">
+      <span class="title-wrapper">${list.name}</span>
+      <span class="count-list">${list.incompleteCount}</span>
+    </h1>
+    <div class="nav-group right">
+      <div class="nav-item options-mobile">
+        <select class="list-edit">
+          <option disabled>Select an action</option>
+
+            <div show.bind="list.userId">
+              <option value="public">Make Public</option> :
+              <option value="private">Make Private</option>
+            </div>
+
+          <option value="delete">Delete</option>
+        </select>
+        <span class="icon-cog"></span>
+      </div>
+      <div class="options-web">
+
+        <a class="nav-item" click.delegate="toggleListPrivacy()">
+          <div show.bind="list.userId">
+            <span class="icon-lock" title="Make list public"></span>
+          </div>
+          <div show.bind="!list.userId">
+            <span class="icon-unlock" title="Make list private"></span>
+          </div>
+        </a>
+
+        <a class="nav-item" click.delegate="deleteList(list._id)">
+          <span class="icon-trash" title="Delete list"></span>
+        </a>
+
+      </div>
+    </div>
+
+    <form class="todo-new input-symbol" submit.delegate="submitNewTask()">
+      <input type="text" name="text" value.bind="new_task_input" placeholder="Type to add new tasks" />
+      <span class="icon-add"></span>
+    </form>
+
+  </nav>
+
+  <nav show.bind="!list">
+    <div class="wrapper-message">
+      <div class="title-message">Loading tasks...</div>
+    </div>
+  </nav>
+
+</template>

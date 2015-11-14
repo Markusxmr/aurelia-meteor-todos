@@ -1,0 +1,61 @@
+<template>
+  <require from="../menu-open-toggle"></require>
+  <require from="./auth-form-input"></require>
+  <require from="./auth-errors"></require>
+
+  <div class="page auth">
+    <nav>
+      <menu-open-toggle></menu-open-toggle>
+    </nav>
+
+    <div class="content-scrollable">
+      <div class="wrapper-auth">
+        <h1 class="title-auth">Join.</h1>
+        <p class="subtitle-auth">
+          Joining allows you to make private lists
+        </p>
+
+        <form submit.delegate="submit()">
+          <auth-errors errors.bind="errors"></auth-errors>
+
+          <auth-form-input
+            has_error.bind="!!errors.email"
+            value.two-way="email"
+            type="email"
+            name="email"
+            label="Your Email"
+            icon_class="icon-email">
+          </auth-form-input>
+
+          <auth-form-input
+            has_error.bind="!!errors.password"
+            value.two-way="password"
+            type="password"
+            name="password"
+            label="Password"
+            icon_class="icon-lock">
+          </auth-form-input>
+
+          <auth-form-input
+            has_error.bind="!!errors.confirm"
+            value.two-way="confirm"
+            type="password"
+            name="confirm"
+            label="Confirm Password"
+            icon_class="icon-lock">
+          </auth-form-input>
+
+          <button type="submit" class="btn-primary">
+            Join Now
+          </button>
+        </form>
+      </div>
+
+      <div class="link-auth-alt">
+        <a route-href="route: auth-signin-page">
+          Have an account? Sign in.
+        </a>
+      </div>
+    </div>
+  </div>
+</template>

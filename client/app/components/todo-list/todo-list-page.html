@@ -1,0 +1,20 @@
+<template>
+  <require from="../app-not-found"></require>
+  <require from="./todo-list-header"></require>
+  <require from="./todo-list-items"></require>
+
+  <div show.bind="!list">
+    <app-not-found></app-not-found>
+  </div>
+
+  <div class="page lists-show">
+
+    <todo-list-header list.bind="list" tasks_loading.bind="tasks_loading"></todo-list-header>
+
+    <div class="content-scrollable list-items">
+      <todo-list-items tasks.bind="tasks"></todo-list-items>
+    </div>
+
+  </div>
+
+</template>

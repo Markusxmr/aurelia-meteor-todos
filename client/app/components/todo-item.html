@@ -1,0 +1,27 @@
+<template>
+  <div class="list-item ${$parent.task_being_edited_id === task._id ? 'editing' : ''} ${task.checked === true ? 'checked': ''}"
+              repeat.for="task of tasks">
+    <label class="checkbox">
+
+      <input type="checkbox"
+             checked.bind="task.checked"
+             name="checked"
+             click.delegate="$parent.onCheckboxChange(task._id, task.checked)"/>
+
+      <span class="checkbox-custom"></span>
+    </label>
+
+    <input type="text"
+           value.bind="task.text"
+           placeholder="Task name"
+           focus.trigger="$parent.onFocus()"
+           blur.trigger="$parent.onBlur()"
+           change.trigger="$parent.onTextChange(task._id, task.text)"
+           click.delegate="$parent.setTaskBeingEditedId(task._id)" />
+           <!-- value.bind="focused ? cur_text : task.text" -->
+
+    <a class="delete-item" click.delegate="$parent.removeThisItem(task._id)">
+      <span class="icon-trash"></span>
+    </a>
+  </div>
+</template>
