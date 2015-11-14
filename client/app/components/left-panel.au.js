@@ -1,4 +1,4 @@
-import {inject, bindable, } from 'aurelia-framework';
+import {inject, bindable} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 
 @bindable('current_user')
@@ -22,6 +22,6 @@ export class LeftPanel {
       // Go to the page for the new list
       this.router.navigateToRoute('lists', { list_id: res });
     });
-  },
+  }
 
 }

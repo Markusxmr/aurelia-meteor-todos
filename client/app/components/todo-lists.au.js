@@ -1,4 +1,4 @@
-import {inject, bindable} from 'aurelia-framework';	
+import {inject, bindable} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 

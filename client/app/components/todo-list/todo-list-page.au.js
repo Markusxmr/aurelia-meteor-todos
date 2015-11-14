@@ -20,7 +20,6 @@ export class TodoListPage {
     if (params.list_id) {
       this.listId = params.list_id;
     }
-
     this.publish();
     this.tracker();
     Tracker.autorun(() => {
