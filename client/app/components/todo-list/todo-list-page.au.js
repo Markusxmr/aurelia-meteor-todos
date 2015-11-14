@@ -7,6 +7,7 @@ export class TodoListPage {
   constructor(ea){
     this.ea = ea;
     this.tasks = [];
+    this.listId = Lists.findOne()._id;
     this.list = {};
     Tracker.autorun(() => this.tracker());
     this.publish();
@@ -17,10 +18,13 @@ export class TodoListPage {
   }
 
   activate(params){
-    this.listId = params.list_id;
+    if (params.list_id) {
+      this.listId = params.list_id;
+    }
+
     this.tracker();
     Tracker.autorun(() => {
-      this.list = Lists.findOne({ _id: this.listId });
+      //this.list = Lists.findOne({ _id: this.listId });
       this.tasks = Todos.find({ listId: this.listId }, {sort: {createdAt : -1}}).fetch();
     });
   }
