@@ -10,7 +10,6 @@ export class TodoListPage {
     this.listId = Lists.findOne()._id;
     this.list = {};
     Tracker.autorun(() => this.tracker());
-    this.publish();
   }
 
   publish() {
@@ -22,6 +21,7 @@ export class TodoListPage {
       this.listId = params.list_id;
     }
 
+    this.publish();
     this.tracker();
     Tracker.autorun(() => {
       //this.list = Lists.findOne({ _id: this.listId });
