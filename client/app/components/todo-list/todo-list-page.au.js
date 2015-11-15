@@ -18,13 +18,9 @@ export class TodoListPage {
   activate(params){
     if (params.id) {
       this.listId = params.id;
-    } else {
-      //this.listId = Lists.findOne()._id;
-      this.listId = 'Qtim4y5CEivH4hCpP';
     }
 
     this.publish();
-
     Tracker.autorun(() => this.tracker());
   }
 
