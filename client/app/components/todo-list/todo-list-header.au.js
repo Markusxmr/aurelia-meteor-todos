@@ -54,8 +54,7 @@ export class TodoListHeader {
           return;
         }
 
-        // Now that this list doesn't exist, redirect to the first list
-        this.router.navigateToRoute('lists', {list_id: Lists.findOne()._id});
+        this.router.navigateToRoute('lists', {id: Lists.findOne()._id});
       });
     }
   }

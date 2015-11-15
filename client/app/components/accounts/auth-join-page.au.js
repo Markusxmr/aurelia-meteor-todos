@@ -1,8 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 
-//const errors = {};
-
 @inject(Router)
 export class AuthJoinPage {
 
@@ -14,7 +12,6 @@ export class AuthJoinPage {
   }
 
   submit(event) {
-
     this.errors = {};
 
     if (this.email  === '') {
@@ -29,10 +26,7 @@ export class AuthJoinPage {
       confirm = 'Please confirm your password';
     }
 
-    //this.errors = errors;
-
     if (! _.isEmpty(this.errors)) {
-      // Form errors found, do not create user
       return;
     }
 
@@ -45,7 +39,8 @@ export class AuthJoinPage {
         return;
       }
 
-      this.router.navigateToRoute('lists', { list_id: Lists.findOne()._id });
+      this.router.navigateToRoute('lists', { id: Lists.findOne()._id });
     });
   }
+  
 }

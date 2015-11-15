@@ -21,7 +21,7 @@ export class TodoLists {
   }
 
   listTasks(id){
-    this.router.navigateToRoute('lists', { list_id : id  });
+    this.router.navigateToRoute('lists', { id : id  });
   }
 
 }

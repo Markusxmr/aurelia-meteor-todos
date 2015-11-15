@@ -1,7 +1,7 @@
 <template>
   <div repeat.for="list of lists">
-    <a click.delegate="$parent.listTasks(list._id)"
-       class="list-todo ${$parent.active_list_id === list._id ? 'active' : ''}">
+    <a click.delegate="listTasks(list._id)"
+       class="list-todo ${active_list_id === list._id ? 'active' : ''}">
       ${list.name}
       <span class="count-list" show.bind="!!list.incompleteCount">
         ${list.incompleteCount}

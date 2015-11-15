@@ -3,27 +3,18 @@
   <require from="./components/connection-issue-dialog"></require>
   <require from="./components/app-loading"></require>
 
-  <div id="container" class="${menu_open ? 'menu-open' : ''}">
+  <div id="container" class="${menuOpen ? 'menu-open' : ''} ${appBodyContainerClass}">
 
-    <left-panel current_user.bind="currentUser" lists.bind="lists"></left-panel> <!--click.delegate="getListId()" onAddList.bind="addList"-->
+    <left-panel lists.bind="lists" add_list.call="addList()"></left-panel>
+    <!--active_list_id.call="getListId()" -->
 
-    <div if.bind="disconnected">
-      <connection-issue-dialog></connection-issue-dialog>
-    </div>
+    <connection-issue-dialog if.bind="disconnected"></connection-issue-dialog>
 
     <div class="content-overlay" click.delegate="toggleMenuOpen()"></div>
+
       <div id="content-container">
-
-        <!--<div if.bind="router.isNavigating">-->
-        <div>
-          <router-view></router-view>
-        </div>
-
-        <!--
-        <div if.bind="!router.isNavigating">
-          <app-loading></app-loading>
-        </div>
-        -->
+        <router-view if.bind="!router.isNavigating"></router-view>
+        <app-loading if.bind="router.isNavigating"></app-loading>
       </div>
 
   </div>

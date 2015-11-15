@@ -6,12 +6,11 @@ export class TodoItem {
   constructor(){
     this.focused = false;
     this.checked = false;
-    this.class = '';
+    this.class   = '';
   }
 
-
   setTaskBeingEditedId(id){
-    this.task_being_edited_id = id;
+    this.taskBeingEditedId = id;
   }
 
   onFocus() {
@@ -22,7 +21,6 @@ export class TodoItem {
   onBlur() {
     this.focused = false;
     this.class -= 'editing';
-    //setTimeout(() => this.task_being_edited_id = null, 75);
   }
 
   onTextChange(id, text) {
@@ -34,7 +32,6 @@ export class TodoItem {
   }
 
   onCheckboxChange(id, checked) {
-    // Set to the opposite of the current state
     this.checked = ! checked;
     Meteor.call("/todos/setChecked", id, this.checked);
   }

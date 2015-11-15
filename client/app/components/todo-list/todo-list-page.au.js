@@ -1,4 +1,4 @@
-import {inject, bindable} from 'aurelia-framework';
+import {inject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
 @inject(EventAggregator)
@@ -7,9 +7,8 @@ export class TodoListPage {
   constructor(ea){
     this.ea = ea;
     this.tasks = [];
-    this.listId = Lists.findOne()._id;
     this.list = {};
-    Tracker.autorun(() => this.tracker());
+    this.listId = '';
   }
 
   publish() {
@@ -17,20 +16,21 @@ export class TodoListPage {
   }
 
   activate(params){
-    if (params.list_id) {
-      this.listId = params.list_id;
+    if (params.id) {
+      this.listId = params.id;
+    } else {
+      this.listId = Lists.findOne()._id;
     }
+
     this.publish();
-    this.tracker();
-    Tracker.autorun(() => {
-      //this.list = Lists.findOne({ _id: this.listId });
-      this.tasks = Todos.find({ listId: this.listId }, {sort: {createdAt : -1}}).fetch();
-    });
+
+    Tracker.autorun(() => this.tracker());
   }
 
   tracker() {
     this.tasksSubHandle = Meteor.subscribe("todos", this.listId);
     this.list = Lists.findOne({ _id: this.listId });
+    this.tasks = Todos.find({ listId: this.listId }, {sort: {createdAt : -1}}).fetch();
     this.tasks_loading = ! this.tasksSubHandle.ready();
   }
 }
