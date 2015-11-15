@@ -26,7 +26,7 @@ export class App {
 
     setTimeout(() => {
       this.router.navigateToRoute('lists', {id: Lists.findOne()._id});
-    },500);
+    }, 3500);
 
     this.subscribe();
   }

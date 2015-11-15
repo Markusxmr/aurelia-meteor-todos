@@ -14,6 +14,11 @@ export class TodoLists {
     this.subscribe();
   }
 
+  publish() {
+    this.menuOpen = false;
+    this.ea.publish('toggle_menu', this.menuOpen);
+  }
+
   subscribe(){
     this.ea.subscribe('active_list_id', payload => {
       return this.active_list_id = payload;
@@ -21,6 +26,7 @@ export class TodoLists {
   }
 
   listTasks(id){
+    this.publish();
     this.router.navigateToRoute('lists', { id : id  });
   }
 
