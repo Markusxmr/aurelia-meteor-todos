@@ -2,6 +2,17 @@
 Meteor.startup(function () {
   if (Lists.find().count() === 0) {
     var data = [
+      {name: "Aurelia",
+       items: ["Forward-thinking",
+         "Modern Architecture",
+         "Two-Way Databinding",
+         "Extensible HTML",
+         "Routing & UI Composition",
+         "MV* with Conventions",
+         "Broad Language Support",
+         "Testable"
+       ]
+      },
       {name: "Meteor Principles",
        items: ["Data on the Wire",
          "One Language",

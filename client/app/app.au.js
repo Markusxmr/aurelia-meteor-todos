@@ -25,7 +25,7 @@ export class App {
     Meteor.subscribe('privateLists');
     //this.subsReady = subsReady;
     this.lists = Lists.find({}, { sort: {createdAt: -1} }).fetch();
-    //this.listId = Lists.findOne()._id;
+    //let listId = Lists.findOne()._id;  
     this.disconnected = show_connection_issues.get() && (! Meteor.status().connected);
     setTimeout(() => show_connection_issues.set(true), connection_issue_timeout);
   }
