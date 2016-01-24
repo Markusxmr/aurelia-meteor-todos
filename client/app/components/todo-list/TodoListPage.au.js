@@ -24,11 +24,12 @@ import {inlineView} from 'aurelia-templating';
 @inject(EventAggregator)
 export class TodoListPage {
 
+  tasks   = [];
+  list    = {};
+  listId  = '';
+
   constructor(ea) {
     this.ea = ea;
-    this.tasks = [];
-    this.list = {};
-    this.listId = '';
   }
 
   publish() {

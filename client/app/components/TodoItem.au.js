@@ -31,11 +31,9 @@ import {inlineView} from 'aurelia-templating';
 @bindable('tasks')
 export class TodoItem {
 
-  constructor(){
-    this.focused = false;
-    this.checked = false;
-    this.class   = '';
-  }
+    focused = false;
+    checked = false;
+    class   = '';
 
   setTaskBeingEditedId(id) {
     this.taskBeingEditedId = id;

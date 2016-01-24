@@ -21,11 +21,12 @@ import {inlineView} from 'aurelia-templating';
 @inject(Router, EventAggregator)
 export class TodoLists {
 
+  active_list_id = '';
+  incomplete_count = false;
+
   constructor(router, ea) {
     this.router = router;
     this.ea = ea;
-    this.active_list_id = '';
-    this.incomplete_count = false;
     this.subscribe();
   }
 

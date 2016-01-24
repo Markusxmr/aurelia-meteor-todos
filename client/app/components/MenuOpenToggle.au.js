@@ -14,9 +14,10 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 
 @inject(EventAggregator)
 export class MenuOpenToggle {
+  menuOpen = false;
+  
   constructor(ea) {
     this.ea = ea;
-    this.menuOpen = false;
   }
 
   toggleMenuOpen() {

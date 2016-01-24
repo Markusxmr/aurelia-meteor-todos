@@ -28,10 +28,11 @@ import {inlineView} from 'aurelia-templating';
 @inject(EventAggregator)
 export class UserSidebarSection {
 
+  menu_open = false;
+  user = undefined;
+
   constructor(ea) {
     this.ea = ea;
-    this.menu_open = false;
-    this.user = undefined;
   }
 
   publish() {

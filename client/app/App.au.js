@@ -30,13 +30,13 @@ const connection_issue_timeout = 5000;
 
 @inject(EventAggregator)
 export class App {
+  appBodyContainerClass  = '';
+  subsReady              = true;
+  menuOpen               = false;
+  disconnected           = false;
+
   constructor(ea: EventAggregator) {
     this.ea = ea;
-    this.appBodyContainerClass  = '';
-    this.subsReady              = true;
-    this.menuOpen               = false;
-    this.disconnected           = false;
-
     if (Meteor.isCordova) {
       this.appBodyContainerClass += ' cordova';
     }

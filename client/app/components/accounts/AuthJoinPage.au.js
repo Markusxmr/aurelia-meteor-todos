@@ -69,11 +69,12 @@ import {inlineView} from 'aurelia-templating';
 @inject(Router)
 export class AuthJoinPage {
 
+  email = '';
+  password = '';
+  confirm = '';
+
   constructor(router){
     this.router = router;
-    this.email = '';
-    this.password = '';
-    this.confirm = '';
   }
 
   submit(event) {

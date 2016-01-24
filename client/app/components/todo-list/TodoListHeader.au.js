@@ -84,11 +84,12 @@ import {inlineView} from 'aurelia-templating';
 @inject(Router)
 export class TodoListHeader {
 
+  id = '';
+  title_input = '';
+  editing_title = false;
+
   constructor(router) {
     this.router = router;
-    this.id = '';
-    this.title_input = '';
-    this.editing_title = false;
   }
 
   startEditingTitle() {

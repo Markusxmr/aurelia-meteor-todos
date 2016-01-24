@@ -11,9 +11,7 @@ import {inlineView} from 'aurelia-templating';
 @bindable('tasks')
 export class TodoListItems {
 
-  constructor() {
-    this.task_being_edited_id = null;
-  }
+  task_being_edited_id = null;
 
   setTaskBeingEditedId(task_id) {
     this.task_being_edited_id = task_id;
