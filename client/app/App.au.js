@@ -19,13 +19,12 @@ const connection_issue_timeout = 5000;
 
       <div class="content-overlay" click.delegate="toggleMenuOpen()"></div>
 
-        <div id="content-container">
-          <router-view if.bind="!router.isNavigating"></router-view>
-          <app-loading if.bind="router.isNavigating"></app-loading>
-        </div>
+      <div id="content-container">
+        <router-view if.bind="!router.isNavigating"></router-view>
+        <app-loading if.bind="router.isNavigating"></app-loading>
+      </div>
 
     </div>
-
   </template>
 `)
 
@@ -56,9 +55,7 @@ export class App {
   }
 
   subscribe() {
-    this.ea.subscribe('toggle_menu', payload => {
-      this.menuOpen = payload;
-    });
+    this.ea.subscribe('toggle_menu', payload => this.menuOpen = payload);
   }
 
   tracker() {

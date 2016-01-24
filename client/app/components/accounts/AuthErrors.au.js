@@ -16,8 +16,5 @@ import {inlineView} from 'aurelia-templating';
 
 @bindable('errors')
 export class AuthErrors {
-
-  constructor() {
-    this.errors = {};
-  }
+  errors = {};
 }

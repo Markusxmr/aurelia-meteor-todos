@@ -35,9 +35,7 @@ export class TodoLists {
   }
 
   subscribe() {
-    this.ea.subscribe('active_list_id', payload => {
-      return this.active_list_id = payload;
-    });
+    this.ea.subscribe('active_list_id', payload => this.active_list_id = payload);
   }
 
   listTasks(id) {

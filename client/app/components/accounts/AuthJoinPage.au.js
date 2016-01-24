@@ -65,6 +65,7 @@ import {inlineView} from 'aurelia-templating';
     </div>
   </template>
 `)
+
 @inject(Router)
 export class AuthJoinPage {
 

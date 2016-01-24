@@ -15,6 +15,5 @@ import {inlineView} from 'aurelia-templating';
     </div>
   </template>
 `)
-export class ConnectionIssueDialog {
-  constructor() {}
-}
+
+export class ConnectionIssueDialog {constructor() {}}

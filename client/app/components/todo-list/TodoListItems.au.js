@@ -7,6 +7,7 @@ import {inlineView} from 'aurelia-templating';
     <todo-item tasks.bind="tasks"></todo-item>
   </template>
 `)
+
 @bindable('tasks')
 export class TodoListItems {
 

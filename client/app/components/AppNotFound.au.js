@@ -16,4 +16,5 @@ import {inlineView} from 'aurelia-templating';
     </div>
   </template>
 `)
+
 export class AppNotFound {}

@@ -6,6 +6,4 @@ import {inlineView} from 'aurelia-templating';
   </template>
 `)
 
-export class AppLoading {
-  constructor() {}
-}
+export class AppLoading {}
