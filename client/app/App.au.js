@@ -1,13 +1,37 @@
 import {inject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import {inlineView} from 'aurelia-templating';
 
 const show_connection_issues = new ReactiveVar(false);
 const connection_issue_timeout = 5000;
-//const subsReady = _.all(subHandles, handle => handle.ready());
+
+@inlineView(`
+  <template>
+    <require from="./components/LeftPanel"></require>
+    <require from="./components/ConnectionIssueDialog"></require>
+    <require from="./components/AppLoading"></require>
+
+    <div id="container" class="\${menuOpen ? 'menu-open' : ''} \${appBodyContainerClass}">
+
+      <left-panel lists.bind="lists" add_list.call="addList()"></left-panel>
+
+      <connection-issue-dialog if.bind="disconnected"></connection-issue-dialog>
+
+      <div class="content-overlay" click.delegate="toggleMenuOpen()"></div>
+
+        <div id="content-container">
+          <router-view if.bind="!router.isNavigating"></router-view>
+          <app-loading if.bind="router.isNavigating"></app-loading>
+        </div>
+
+    </div>
+
+  </template>
+`)
 
 @inject(EventAggregator)
 export class App {
-  constructor(ea){
+  constructor(ea: EventAggregator) {
     this.ea = ea;
     this.appBodyContainerClass  = '';
     this.subsReady              = true;
@@ -56,7 +80,7 @@ export class App {
     });
   }
 
-  configureRouter(config, router){
+  configureRouter(config, router) {
 
     this.router = router;
 
@@ -64,27 +88,27 @@ export class App {
     config.map([
       {
         route: ['','lists'],
-        moduleId: './components/todo-list/todo-list-page',
-        name:'root',
+        moduleId: './components/todo-list/TodoListPage',
+        name: 'root',
         href: 'root',
         nav: false
       },
       {
         route: ['','lists/:id'],
-        moduleId: './components/todo-list/todo-list-page',
-        name:'lists',
+        moduleId: './components/todo-list/TodoListPage',
+        name: 'lists',
         href: '#lists/:id',
         nav: false
       },
       {
         route: 'auth-join-page',
-        moduleId: './components/accounts/auth-join-page',
+        moduleId: './components/accounts/AuthJoinPage',
         name: 'auth-join-page',
         nav: false
       },
       {
         route: 'auth-signin-page',
-        moduleId: './components/accounts/auth-signin-page',
+        moduleId: './components/accounts/AuthSigninPage',
         name: 'auth-signin-page',
         nav: false
       }

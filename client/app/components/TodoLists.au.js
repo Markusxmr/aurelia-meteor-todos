@@ -1,12 +1,27 @@
 import {inject, bindable} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import {inlineView} from 'aurelia-templating';
+
+@inlineView(`
+  <template>
+    <div repeat.for="list of lists">
+      <a click.delegate="listTasks(list._id)"
+         class="list-todo \${active_list_id === list._id ? 'active' : ''}">
+        \${list.name}
+        <span class="count-list" show.bind="!!list.incompleteCount">
+          \${list.incompleteCount}
+        </span>
+      </a>
+    </div>
+  </template>
+`)
 
 @bindable('lists')
 @inject(Router, EventAggregator)
 export class TodoLists {
 
-  constructor(router, ea){
+  constructor(router, ea) {
     this.router = router;
     this.ea = ea;
     this.active_list_id = '';
@@ -19,15 +34,14 @@ export class TodoLists {
     this.ea.publish('toggle_menu', this.menuOpen);
   }
 
-  subscribe(){
+  subscribe() {
     this.ea.subscribe('active_list_id', payload => {
       return this.active_list_id = payload;
     });
   }
 
-  listTasks(id){
+  listTasks(id) {
     this.publish();
     this.router.navigateToRoute('lists', { id : id  });
   }
-
 }
